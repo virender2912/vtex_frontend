@@ -1,0 +1,103 @@
+.header {
+    font-family: Arial, sans-serif;
+    padding: 17px 8rem;
+    max-width: 100%;
+    margin: 25px auto;
+    margin-top: 0;
+    background-color: #F8F6F5;
+    height: 120px;
+
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-top-left {
+    display: flex;
+    align-items: center;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.125rem;
+}
+
+.left-icons i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.icon-counter {
+    position: relative;
+    left: 7px;
+    bottom: 17px;
+    background-color: rgb(167 222 217);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 2px 5px;
+}
+
+.middle-section select {
+    margin-right: 10px;
+    border: none;
+    font-size: 14px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.125rem;
+}
+
+.country-selector img {
+    height: 16px;
+}
+
+.right-links .link {
+    margin-left: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.header-top-left .middle-section {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.header-nav a {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.125rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    color: #a7ded9;
+    /* Pink hover effect */
+}
+
+.logo {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #005845;
+    font-weight: bold;
+}
+
+.header-nav .nav-item:first-child {
+    color: rgb(208, 47, 105);
+}
