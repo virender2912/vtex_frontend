@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CollectionProduct.css';
+import { Link } from 'react-router-dom';
 
 const CollectionProductGrid = ({ id }) => {
     const [collectionproducts, setCollectionProducts] = useState([]);
@@ -50,12 +51,14 @@ const CollectionProductGrid = ({ id }) => {
             {Array.isArray(collectionproducts) && collectionproducts.length > 0 ? (
                 collectionproducts.map(collectionproduct => (
                     <div key={collectionproduct.ProductId} className="collection-product-card">
-                        <img
-                            src={collectionproduct.SkuImageUrl}
-                            alt={collectionproduct.ProductName}
-                            className="collectionproduct-image"
-                        />
+                        <Link key={collectionproduct.SkuId} to={`/product/${collectionproduct.SkuId}`} className="product-card-link">
+                            <img
+                                src={collectionproduct.SkuImageUrl}
+                                alt={collectionproduct.ProductName}
+                                className="collectionproduct-image"
+                            />
 
+                        </Link>
                     </div>
                 ))
             ) : (
