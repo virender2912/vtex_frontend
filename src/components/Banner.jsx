@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Banner.css';
 import CollectionProduct from './CollectionProduct';
 import CollectionPage from './CollectionPage';
+import SearchComponent from './SearchComponent';
 
 const Banner = ({ imageSrc, title, description, productid }) => { // Ensure the correct prop name
     const [products, setProducts] = useState([]);

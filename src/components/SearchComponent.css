@@ -1,0 +1,161 @@
+/* Container for search results */
+.col-search-container {
+    padding: 20px;
+}
+
+/* Search input and button wrapper */
+.col-search-input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.col-search-heading {
+    text-align: center;
+    font-weight: 200;
+}
+
+.col-search-input {
+    /* flex-grow: 1; */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 50%;
+}
+
+.col-search-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.col-search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Grid layout for product cards */
+.col-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Style for individual product cards */
+.col-product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col-product-card:hover {
+    transform: translateY(-5px);
+    /* Lift the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Shadow effect on hover */
+}
+
+/* Style for product image */
+.col-product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    /* Ensures images maintain aspect ratio */
+    margin-bottom: 10px;
+}
+
+/* Style for product name */
+.col-product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Style for product price */
+.col-product-price {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* Style for no results message */
+.col-no-results-text {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Loading and error messages */
+.col-loading-text,
+.col-error-text {
+    font-size: 16px;
+    color: #ff0000;
+}
+
+@media (max-width: 1024px) {
+    .col-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .col-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .col-products-grid {
+        grid-template-columns: 1fr;
+        /* 1 column for very small screens */
+    }
+}
+
+/* Loader container */
+.col-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Spinner animation */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner keyframes */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading text */
+.col-loader p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+}

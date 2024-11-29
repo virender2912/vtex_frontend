@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import './CollectionProduct.css';
 import { Link } from 'react-router-dom'; // Import Link for routing
 
 const CollectionPage = ({ id }) => {
-    const [collectionproducts, setCollectionProducts] = useState([]);
+    const [collectionProducts, setCollectionProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -13,12 +12,30 @@ const CollectionPage = ({ id }) => {
     useEffect(() => {
         const fetchCollectionProducts = async () => {
             try {
-                const response = await axios.get(`https://vtex-backend.onrender.com/collectionProduct?collectionId=${collectionId}`);
+                // Fetch collection products
+                const response = await axios.get(`http://localhost:3000/collectionProduct?collectionId=${collectionId}`);
                 console.log('API Response:', response);
 
-                // Ensure the 'Data' key is valid
                 if (Array.isArray(response.data.Data)) {
-                    setCollectionProducts(response.data.Data);
+                    const products = response.data.Data;
+
+                    // Fetch prices for each product
+                    const productsWithPrices = await Promise.all(
+                        products.map(async (product) => {
+                            try {
+                                const priceResponse = await axios.get(`http://localhost:3000/pricing/${product.SkuId}`);
+                                console.log(`Price for SkuId ${product.SkuId}:`, priceResponse.data.basePrice);
+
+                                // Add the price to the product object
+                                return { ...product, Price: priceResponse.data.basePrice || 0 };
+                            } catch (err) {
+                                console.error(`Error fetching price for SkuId ${product.SkuId}:`, err);
+                                return { ...product, Price: 0 }; // Default price to 0 if API fails
+                            }
+                        })
+                    );
+
+                    setCollectionProducts(productsWithPrices);
                 } else {
                     setError('Data is not an array');
                 }
@@ -51,18 +68,18 @@ const CollectionPage = ({ id }) => {
             <h1 className="product-heading">Collection Products</h1>
 
             <div className="product-grid">
-                {Array.isArray(collectionproducts) && collectionproducts.length > 0 ? (
-                    collectionproducts.map((collectionproduct) => (
-                        <Link key={collectionproduct.SkuId} to={`/product/${collectionproduct.SkuId}`} className="product-card-link"> {/* Wrap card in Link */}
-                            <div key={collectionproduct.ProductId} className="product-card">
+                {Array.isArray(collectionProducts) && collectionProducts.length > 0 ? (
+                    collectionProducts.map((product) => (
+                        <Link key={product.SkuId} to={`/product/${product.SkuId}`} className="product-card-link">
+                            <div key={product.ProductId} className="product-card">
                                 <img
-                                    src={collectionproduct.SkuImageUrl}
-                                    alt={collectionproduct.ProductName}
+                                    src={product.SkuImageUrl || 'default-image.jpg'}
+                                    alt={product.ProductName}
                                     className="product-image"
                                 />
-                                <div className="product-name">{collectionproduct.ProductName}</div>
+                                <div className="product-name">{product.ProductName}</div>
                                 <p className="product-price">
-                                    {collectionproduct.Price ? `$${(collectionproduct.Price / 100).toFixed(2)}` : `$${0}`}
+                                    {product.Price ? `$${(product.Price / 100).toFixed(2)}` : 'Price not available'}
                                 </p>
                             </div>
                         </Link>
@@ -76,4 +93,3 @@ const CollectionPage = ({ id }) => {
 };
 
 export default CollectionPage;
-

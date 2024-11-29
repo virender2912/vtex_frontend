@@ -1,9 +1,16 @@
-import React from "react";
-import "./Header.css"; // Import your custom styles here
 
-import { Link } from "react-router-dom";
+import "./Header.css"; // Import your custom styles here
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import SearchModal from './SearchModal';
+
 
 const Header = () => {
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    const toggleSearchModal = () => {
+        setIsSearchOpen((prevState) => !prevState); // Toggle the modal visibility
+    };
     return (
         <header className="header">
             <div className="header-top">
@@ -30,9 +37,10 @@ const Header = () => {
                         <a href="/login" className="link">
                             Register a New Account / Login
                         </a>
-                        <a href="/search" className="link">
+                        <Link to="#" className="link" onClick={toggleSearchModal}>
                             <i className="icon-search"></i> Search
-                        </a>
+                        </Link>
+                        {isSearchOpen && <SearchModal onClose={toggleSearchModal} />}
                     </div>
                 </div>
 
@@ -54,7 +62,7 @@ const Header = () => {
                 <Link to="/groups" className="nav-item">
                     Groups
                 </Link>
-                <Link to="/collection" className="nav-item">
+                <Link to="/accessories" className="nav-item">
                     Accessories
                 </Link>
                 <Link to="/comfortable-clothes" className="nav-item">

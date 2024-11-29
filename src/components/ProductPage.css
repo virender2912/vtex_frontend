@@ -4,8 +4,10 @@
 .single_product-page-container {
     /* max-width: 1200px; */
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
     background: #f8f6f5;
+    padding-left: 200px;
+
 }
 
 /* Flexbox layout for product details */
@@ -18,21 +20,62 @@
 }
 
 /* Image section */
-.single_product-image {
-    flex: 1;
-    /* Takes up 50% width */
-    max-width: 50%;
-    /* Ensures image doesn't stretch beyond 50% */
-    text-align: center;
+/* .single_product-images {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+} */
+
+/* Container for images */
+.single_product-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.single_product-img {
-    max-width: 50%;
-    /* Ensures the image is responsive */
+/* Main product image */
+.single_product-main-img {
+    width: 100%;
+    max-width: 455px;
     height: auto;
+    border: 2px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Thumbnail images container */
+.single_product-thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Thumbnail images */
+.single_product-thumbnail-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.single_product-thumbnail-img:hover {
+    transform: scale(1.1);
+}
+
+/* 
+.single_product-img {
+    max-width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+ */
 
 /* Content section for title, price, and description */
 .single_product-info {

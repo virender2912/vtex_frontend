@@ -1,31 +1,37 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './ProductPage.css'; // Assuming you add styles for the page.
+import './ProductPage.css';
 
 const ProductPage = () => {
-    const skuId = useParams().id;  // Get SKU ID from URL
+    const skuId = useParams().id; // Get SKU ID from URL
     const [sku, setSku] = useState(null);
+    const [price, setPrice] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchSku = async () => {
+        const fetchSkuAndPrice = async () => {
             try {
-                const response = await axios.get(`https://vtex-backend.onrender.com/sku/${skuId}`);
-                setSku(response.data);
+                // Fetch SKU details
+                const skuResponse = await axios.get(`http://localhost:3000/sku/${skuId}`);
+                setSku(skuResponse.data);
+
+                // Fetch Pricing details
+                const pricingResponse = await axios.get(`http://localhost:3000/pricing/${skuId}`);
+                setPrice(pricingResponse.data.basePrice); // Extract `basePrice` from the pricing response
             } catch (err) {
-                console.error('Error fetching SKU:', err);
-                setError('Error fetching SKU');
+                console.error('Error fetching data:', err);
+                setError('Error fetching product details');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchSku();
+        fetchSkuAndPrice();
     }, [skuId]);
 
-    // Loader Spinner
     if (loading) {
         return (
             <div className="loading-spinner">
@@ -38,30 +44,48 @@ const ProductPage = () => {
         return <div className="error-message">{error}</div>;
     }
 
-    // Retrieve image URL from the Images array if available
-    const imageUrl = sku?.Images?.[0]?.ImageUrl || 'default-image.jpg'; // Default image if none found
-
     return sku ? (
         <div className="single_product-page-container">
             <div className="single_product-header">
-                {/* <h1>{sku.NameComplete || 'Product Name Not Available'}</h1> */}
+                <h1>{sku.NameComplete || 'Product Name Not Available'}</h1>
             </div>
             <div className="single_product-details">
-                <div className="single_product-image">
-                    <img
-                        src={imageUrl}
-                        alt={sku.NameComplete || 'SKU Image'}
-                        className="single_product-img"
-                    />
+                <div className="single_product-images">
+                    {sku.Images?.length > 0 ? (
+                        <>
+                            {/* First image large */}
+                            <img
+                                src={sku.Images[0].ImageUrl}
+                                alt={sku.Images[0].ImageName || 'Main Image'}
+                                className="single_product-main-img"
+                            />
+                            {/* Other images smaller */}
+                            <div className="single_product-thumbnails">
+                                {sku.Images.slice(1).map((image, index) => (
+                                    <img
+                                        key={index}
+                                        src={image.ImageUrl}
+                                        alt={image.ImageName || `Thumbnail ${index + 1}`}
+                                        className="single_product-thumbnail-img"
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <img
+                            src="default-image.jpg"
+                            alt="Default Product"
+                            className="single_product-main-img"
+                        />
+                    )}
                 </div>
                 <div className="single_product-info">
                     <h1>{sku.NameComplete || 'Product Name Not Available'}</h1>
-
                     <p className="single_product-description">
                         {sku.ProductDescription || 'No description available'}
                     </p>
                     <p className="single_product-price">
-                        Price: {sku.SkuSellers[0]?.Price ? `$${(sku.SkuSellers[0].Price / 100).toFixed(2)}` : `${0}`}
+                        Price: {price ? `$${(price / 100).toFixed(2)}` : `${0}`}
                     </p>
                 </div>
             </div>

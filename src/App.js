@@ -67,7 +67,7 @@ import ProductPage from './components/ProductPage';
 import Banner from './components/Banner';
 import Header from './components/Header';
 import CollectionPage from './components/CollectionPage';
-
+import SearchComponent from './components/SearchComponent'
 function App() {
   return (
     <Router>
@@ -102,7 +102,7 @@ function App() {
                   />
                   <ProductGrid myId={139} />
                   {/* Collection page component */}
-                  <CollectionPage />
+                  {/* <CollectionPage /> */}
                 </>
               }
             />
@@ -110,9 +110,10 @@ function App() {
             <Route path="/product/:id" element={<ProductPage />} />
 
             {/* You can add more routes for other collection pages */}
-            <Route path="/collection" element={<CollectionPage id={139} />} />
+            <Route path="/accessories" element={<CollectionPage id={139} />} />
             <Route path="/comfortable-clothes" element={<CollectionPage id={137} />} />
             <Route path="/dresses-and-kaftans" element={<CollectionPage id={138} />} />
+            <Route path="/search-results" element={<SearchComponent />} />
           </Routes>
         </main>
       </div>
