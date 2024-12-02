@@ -1,6 +1,7 @@
 /* Banner Container */
 .banner-container {
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: 50px;
     display: flex;
     height: 570px;
 }

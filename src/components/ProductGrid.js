@@ -13,7 +13,8 @@ const ProductGrid = ({ myId }) => {
     useEffect(() => {
         const fetchCollectionProducts = async () => {
             try {
-                const collectionResponse = await axios.get(`http://localhost:3000/collectionProduct?collectionId=${collectionId}`);
+                // const collectionResponse = await axios.get(`http://localhost:3000/collectionProduct?collectionId=${collectionId}`);
+                const collectionResponse = await axios.get(`https://vtex-backend.onrender.com/collectionProduct?collectionId=${collectionId}`);
                 if (Array.isArray(collectionResponse.data.Data)) {
                     const products = collectionResponse.data.Data;
 
@@ -21,7 +22,8 @@ const ProductGrid = ({ myId }) => {
                     const productsWithPrices = await Promise.all(
                         products.map(async (product) => {
                             try {
-                                const priceResponse = await axios.get(`http://localhost:3000/pricing/${product.SkuId}`);
+                                // const priceResponse = await axios.get(`http://localhost:3000/pricing/${product.SkuId}`);
+                                const priceResponse = await axios.get(`https://vtex-backend.onrender.com/pricing/${product.SkuId}`);
                                 console.log(`Price for SkuId ${product.SkuId}:`, priceResponse.data.basePrice);
 
                                 return { ...product, basePrice: priceResponse.data.basePrice || 0 }; // Include basePrice or default to 0
@@ -75,7 +77,7 @@ const ProductGrid = ({ myId }) => {
                                 />
                                 <h3 className="product-name">{product.ProductName}</h3>
                                 <p className="product-price">
-                                    {product.basePrice ? `$${(product.basePrice / 100).toFixed(2)}` : 'Price not available'}
+                                    {product.basePrice ? `$${(product.basePrice / 100).toFixed(2)}` : '0'}
                                     {/* {price ? `$${(price / 100).toFixed(2)}` : `${0}`} */}
                                 </p>
                             </div>

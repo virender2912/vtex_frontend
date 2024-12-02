@@ -27,7 +27,7 @@
 
 .col-search-button {
     padding: 10px 15px;
-    background-color: #007bff;
+    background-color: #fda5a5;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -35,7 +35,7 @@
 }
 
 .col-search-button:hover {
-    background-color: #0056b3;
+    background-color: #d81e1e;
 }
 
 /* Grid layout for product cards */
@@ -45,11 +45,14 @@
     /* 4 columns */
     gap: 16px;
     margin-top: 20px;
+
+    margin-left: 308px;
+    margin-right: 308px;
 }
 
 /* Style for individual product cards */
 .col-product-card {
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 8px;
     padding: 16px;
     text-align: center;
@@ -158,4 +161,10 @@
     margin-top: 10px;
     font-size: 16px;
     color: #666;
+}
+
+.col-product-card {
+
+    cursor: pointer;
+
 }

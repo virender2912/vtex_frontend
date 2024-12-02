@@ -99,6 +99,7 @@ function App() {
                     imageSrc="https://a.storyblok.com/f/169304/5988x3890/00cfe0d863/leem_webbannerimages_20nov2024.jpg/m/1440x0/filters:quality(95)"
                     title="Pieces that exude warmth and elegance."
                     description="Explore the perfect blend of elegance and warmth."
+                    productid="138"
                   />
                   <ProductGrid myId={139} />
                   {/* Collection page component */}

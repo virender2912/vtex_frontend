@@ -12,12 +12,14 @@
 }
 
 .product-grid {
+    margin-left: 255px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 55px;
     padding: 20px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     max-width: 1200px;
+    margin-right: 255px;
 }
 
 .product-card {
@@ -27,6 +29,7 @@
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+
 }
 
 .product-card:hover {

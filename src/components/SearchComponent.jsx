@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'; // For accessing query parameters and navigation
@@ -28,7 +27,8 @@ const SearchComponent = () => {
         setLoading(true);
         setError('');
         try {
-            const response = await axios.get('http://localhost:3000/searchProducts', {
+            // const response = await axios.get('http://localhost:3000/searchProducts', {
+            const response = await axios.get('https://vtex-backend.onrender.com/searchProducts', {
                 params: { q: queryParam },
             });
             setProducts(response.data);
@@ -49,6 +49,16 @@ const SearchComponent = () => {
     const handleSearchButtonClick = () => {
         if (query.trim()) {
             navigate(`/search-results?q=${query}`);
+        }
+    };
+
+    // Navigate to product page on product click
+    const handleProductClick = (product) => {
+        const skuId = product.skus && product.skus.skus[0].sku;
+        if (skuId) {
+            navigate(`/product/${skuId}`);
+        } else {
+            navigate(`/product/${product.productId}`);
         }
     };
 
@@ -83,8 +93,12 @@ const SearchComponent = () => {
             <div className="col-products-grid">
                 {!loading && products.length > 0 ? (
                     products.map((product) => (
-                        <div key={product.productId} className="col-product-card">
-                            <h4 className="col-product-name">{product.productName}</h4>
+                        <div
+                            key={product.productId}
+                            className="col-product-card"
+                            onClick={() => handleProductClick(product)} // On product card click, navigate to the product page
+                        >
+
 
                             {/* Display product image */}
                             {product.items && product.items[0]?.images && (
@@ -96,6 +110,7 @@ const SearchComponent = () => {
                             )}
 
                             {/* Display product price */}
+                            <h4 className="col-product-name">{product.productName}</h4>
                             <p className="col-product-price">
                                 ${product.items[0]?.sellers[0]?.commertialOffer?.Price / 100}
                             </p>
@@ -110,4 +125,3 @@ const SearchComponent = () => {
 };
 
 export default SearchComponent;
-

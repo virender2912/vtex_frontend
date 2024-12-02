@@ -12,7 +12,7 @@ const Banner = ({ imageSrc, title, description, productid }) => { // Ensure the 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('/collectionProduct');
+                const response = await axios.get('https://vtex-backend.onrender.com/collectionProduct');
                 console.log('API Response:', response.data); // Log the structure for debugging
                 setProducts(response.data.products || []); // Adjust key based on API response
             } catch (error) {
