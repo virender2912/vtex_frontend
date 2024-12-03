@@ -1,18 +1,19 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ProductPage.css';
+import { Link } from 'react-router-dom'; // Import Link for routing
 
 const ProductPage = () => {
     const skuId = useParams().id; // Get SKU ID from URL
     const [sku, setSku] = useState(null);
     const [price, setPrice] = useState(null);
+    const [recommendedProducts, setRecommendedProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchSkuAndPrice = async () => {
+        const fetchData = async () => {
             try {
                 // Fetch SKU details
                 // const skuResponse = await axios.get(`http://localhost:3000/sku/${skuId}`);
@@ -23,6 +24,13 @@ const ProductPage = () => {
                 // const pricingResponse = await axios.get(`http://localhost:3000/pricing/${skuId}`);
                 const pricingResponse = await axios.get(`https://vtex-backend.onrender.com/pricing/${skuId}`);
                 setPrice(pricingResponse.data.basePrice); // Extract `basePrice` from the pricing response
+
+                // Fetch recommended products
+                const recommendationsResponse = await axios.get(
+                    `https://vtex-backend.onrender.com/recommendations/${skuId}`
+                    // `http://localhost:3000/recommendations/${skuId}`
+                );
+                setRecommendedProducts(recommendationsResponse.data);
             } catch (err) {
                 console.error('Error fetching data:', err);
                 setError('Error fetching product details');
@@ -31,7 +39,7 @@ const ProductPage = () => {
             }
         };
 
-        fetchSkuAndPrice();
+        fetchData();
     }, [skuId]);
 
     if (loading) {
@@ -48,6 +56,7 @@ const ProductPage = () => {
 
     return sku ? (
         <div className="single_product-page-container">
+            {/* Main Product Display */}
             <div className="single_product-header">
                 <h1>{sku.NameComplete || 'Product Name Not Available'}</h1>
             </div>
@@ -91,7 +100,41 @@ const ProductPage = () => {
                     </p>
                 </div>
             </div>
+            {/* Recommended Products Grid */}
+            <div className="recommended_products-section">
+                <h2>Recommended Products</h2>
+                <div className="recommended_products-grid">
+                    {recommendedProducts.length > 0 ? (
+                        recommendedProducts.map((product) => (
+                            <Link
+                                key={product.productId}
+                                to={`/product/${product.items[0]?.itemId}`} // Use the item's SKU ID for redirection
+                                className="recommended_product-link"
+                            >
+                                <div className="recommended_product-card">
+                                    <img
+                                        src={product.items[0]?.images[0]?.imageUrl || 'default-image.jpg'}
+                                        alt={product.productName || 'Recommended Product'}
+                                        className="recommended_product-img"
+                                    />
+                                    <h3 className="recommended_product-name">
+                                        {product.productName || 'Product Name'}
+                                    </h3>
+                                    <p className="recommended_product-price">
+                                        {product.items[0]?.sellers[0]?.commertialOffer?.Price
+                                            ? `$${product.items[0]?.sellers[0]?.commertialOffer?.Price.toFixed(2)}`
+                                            : 'Price not available'}
+                                    </p>
+                                </div>
+                            </Link>
+                        ))
+                    ) : (
+                        <p>No recommended products available.</p>
+                    )}
+                </div>
+            </div>
         </div>
+
     ) : (
         <div className="not-found-message">SKU not found</div>
     );
