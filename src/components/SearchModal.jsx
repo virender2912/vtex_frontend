@@ -123,7 +123,7 @@ const SearchModal = ({ onClose }) => {
         setError('');
         try {
             // const response = await axios.get('http://localhost:3000/searchProducts', {
-            const response = await axios.get('https://vtex-backend.onrender.com/searchProducts', {
+            const response = await axios.get('https://vtex-backend-1-hyln.onrender.com/searchProducts', {
                 params: { q: query },
             });
             setProducts(response.data);

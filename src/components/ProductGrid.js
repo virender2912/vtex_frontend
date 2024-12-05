@@ -14,7 +14,7 @@ const ProductGrid = ({ myId }) => {
         const fetchCollectionProducts = async () => {
             try {
                 // const collectionResponse = await axios.get(`http://localhost:3000/collectionProduct?collectionId=${collectionId}`);
-                const collectionResponse = await axios.get(`https://vtex-backend.onrender.com/collectionProduct?collectionId=${collectionId}`);
+                const collectionResponse = await axios.get(`https://vtex-backend-1-hyln.onrender.com/collectionProduct?collectionId=${collectionId}`);
                 if (Array.isArray(collectionResponse.data.Data)) {
                     const products = collectionResponse.data.Data;
 
@@ -23,7 +23,7 @@ const ProductGrid = ({ myId }) => {
                         products.map(async (product) => {
                             try {
                                 // const priceResponse = await axios.get(`http://localhost:3000/pricing/${product.SkuId}`);
-                                const priceResponse = await axios.get(`https://vtex-backend.onrender.com/pricing/${product.SkuId}`);
+                                const priceResponse = await axios.get(`https://vtex-backend-1-hyln.onrender.com/pricing/${product.SkuId}`);
                                 console.log(`Price for SkuId ${product.SkuId}:`, priceResponse.data.basePrice);
 
                                 return { ...product, basePrice: priceResponse.data.basePrice || 0 }; // Include basePrice or default to 0
@@ -117,7 +117,7 @@ export default ProductGrid;
 //             try {
 //                 const collectionResponse = await axios.get(
 //                     `http://localhost:3000/collectionProduct?collectionId=${collectionId}`
-//                     // `https://vtex-backend.onrender.com/collectionProduct?collectionId=${collectionId}`
+//                     // `https://vtex-backend-1-hyln.onrender.com/collectionProduct?collectionId=${collectionId}`
 //                 );
 //                 if (Array.isArray(collectionResponse.data.Data)) {
 //                     const products = collectionResponse.data.Data;
@@ -127,7 +127,7 @@ export default ProductGrid;
 //                         products.map(async (product) => {
 //                             try {
 //                                 const priceResponse = await axios.get(
-//                                     // `https://vtex-backend.onrender.com/pricing/${product.SkuId}`
+//                                     // `https://vtex-backend-1-hyln.onrender.com/pricing/${product.SkuId}`
 //                                     `http://localhost:3000/pricing/${product.SkuId}`
 //                                 );
 //                                 return { ...product, basePrice: priceResponse.data.basePrice || 0 };

@@ -18,17 +18,17 @@ const ProductPage = () => {
             try {
                 // Fetch SKU details
                 // const skuResponse = await axios.get(`http://localhost:3000/sku/${skuId}`);
-                const skuResponse = await axios.get(`https://vtex-backend.onrender.com/sku/${skuId}`);
+                const skuResponse = await axios.get(`https://vtex-backend-1-hyln.onrender.com/sku/${skuId}`);
                 setSku(skuResponse.data);
 
                 // Fetch Pricing details
                 // const pricingResponse = await axios.get(`http://localhost:3000/pricing/${skuId}`);
-                const pricingResponse = await axios.get(`https://vtex-backend.onrender.com/pricing/${skuId}`);
+                const pricingResponse = await axios.get(`https://vtex-backend-1-hyln.onrender.com/pricing/${skuId}`);
                 setPrice(pricingResponse.data.basePrice); // Extract `basePrice` from the pricing response
 
                 // Fetch recommended products
                 const recommendationsResponse = await axios.get(
-                    `https://vtex-backend.onrender.com/recommendations/${skuId}`
+                    `https://vtex-backend-1-hyln.onrender.com/recommendations/${skuId}`
                     // `http://localhost:3000/recommendations/${skuId}`
                 );
                 setRecommendedProducts(recommendationsResponse.data);
