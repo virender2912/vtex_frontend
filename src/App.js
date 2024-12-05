@@ -66,6 +66,8 @@ import ProductGrid from './components/ProductGrid';
 import ProductPage from './components/ProductPage';
 import Banner from './components/Banner';
 import Header from './components/Header';
+import Footer from './components/Footer';
+// import Footer from './components/footer';
 import CollectionPage from './components/CollectionPage';
 import SearchComponent from './components/SearchComponent'
 function App() {
@@ -118,6 +120,8 @@ function App() {
           </Routes>
         </main>
       </div>
+    
+    <Footer/>
     </Router>
   );
 }
