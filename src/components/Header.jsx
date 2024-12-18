@@ -34,7 +34,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="right-links">
-                        <a href="/login" className="link">
+                        <a href="/register" className="link">
                             Register a New Account / Login
                         </a>
                         <Link to="#" className="link" onClick={toggleSearchModal}>

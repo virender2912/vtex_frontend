@@ -58,7 +58,7 @@ const CollectionProductGrid = ({ id }) => {
                                 alt={collectionproduct.ProductName}
                                 className="collectionproduct-image"
                             />
-
+ 
                         </Link>
                     </div>
                 ))

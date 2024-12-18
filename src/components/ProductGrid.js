@@ -64,7 +64,7 @@ const ProductGrid = ({ myId }) => {
 
     return (
         <div className="collection-product-container">
-            <h1 className="product-heading">Collection Products</h1>
+            <h1 className="product-heading">New Arrival</h1>
             <div className="product-grid">
                 {collectionProducts.length > 0 ? (
                     collectionProducts.map((product) => (

@@ -73,3 +73,14 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+@media only screen and (max-width:767px){
+    .product-heading {
+        padding-right: 170px;
+    }
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        padding: 20px 0;
+    }
+}

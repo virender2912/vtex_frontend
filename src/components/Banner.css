@@ -123,3 +123,10 @@
 .view-collection-button:hover {
     background-color: #333;
 }
+
+@media only screen and (max-width:767px){
+
+    .collection-product-grid {
+        display: none;
+    }
+}

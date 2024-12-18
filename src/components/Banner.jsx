@@ -5,7 +5,7 @@ import CollectionProduct from './CollectionProduct';
 import CollectionPage from './CollectionPage';
 import SearchComponent from './SearchComponent';
 
-const Banner = ({ imageSrc, title, description, productid }) => { // Ensure the correct prop name
+const Banner = ({ imageSrc, heading, subheading, collectionID }) => { // Ensure the correct prop name
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -35,13 +35,26 @@ const Banner = ({ imageSrc, title, description, productid }) => { // Ensure the 
                 />
             </div>
             <div className="banner-content">
-                <h2 className="banner-title">{title}</h2>
-                <p className="banner-description">{description}</p>
+                <h2 className="banner-title">{heading}</h2>
+                <p className="banner-description">{subheading}</p>
 
                 {/* Pass the productid prop to CollectionProduct */}
-                <CollectionProduct id={productid} />
-
+                <CollectionProduct id={collectionID} />
+               
+ 
             </div>
+
+            {/* <button type="button" title="View Collection" class="cta product-collection-banner__link-container product-collection-banner__link-container--sale">
+            <span class="description-small-bold product-collection-banner__link-title description-small-bold product-collection-banner__link-title--sale">
+            {buttonname}
+                </span>
+                <span class="product-collection-banner__link-subtitle product-collection-banner__link-subtitle--sale product-collection-banner__link-subtitle">
+                {piececount}
+                    </span>
+                    <span class="icon icon--flip icon--fill product-collection-banner__link-icon product-collection-banner__link-icon--sale">
+            </span></button> */}
+
+
         </div>
     );
 };
