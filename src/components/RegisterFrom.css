@@ -30,7 +30,7 @@ input:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
-button {
+/* button {
     width: 100%;
     padding: 10px;
     background: #007bff;
@@ -40,7 +40,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
-}
+} */
 
 button:hover {
     background: #0056b3;

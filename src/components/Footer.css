@@ -1,17 +1,23 @@
+
 .footer {
     background-color: #f8f7f6;
     color: #a78a8a;
     flex-shrink: 0;
     /* padding-bottom: 1rem;
     padding-top: 3.5rem; */
-    padding: 1.5rem 8rem;
+    /* padding: 1.5rem 8rem; */
+    padding: 1.5rem 1.5rem;
+}
+ul.contact-section.contact-section--grid.footer__contact.row {
+    padding-right: 0;
 }
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -.5rem;
-    margin-right: -.5rem;
+    /* margin-left: -.5rem;
+    margin-right: -.5rem; */
     direction: rtl;
+    gap: 10px;
 }
 .footer__logo-container-section {
     display: flex;
@@ -63,8 +69,10 @@
     fill: currentcolor;
 }
 .icon {
-    display: block;
+    /* display: block; */
+    display: inline-block;
     margin-bottom: 0;
+    vertical-align: middle;
     /* vertical-align: baseline; */
   
 }
@@ -110,9 +118,18 @@
 .footer-social-media {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    /* gap: 1rem; */
+    gap: 0.5rem;
     justify-content: flex-start;
     margin-top: 1.25rem;
+    padding-right:0px;
+
+}
+.footer__links ul {
+    padding-right: 0;
+}
+.row.fotrmenu {
+    gap: 10px 40px;
 }
 .footer-social-media__item {
     flex: 0 0 1.5rem;
@@ -143,6 +160,7 @@ a.footer__link {
 .contact-info__icon-wrap {
     color: #00524d;
     height: 1.5625rem;
+    margin-left: 5px;
 }
 [dir=rtl] .icon--flip {
     transform: scaleX(-1);
@@ -174,4 +192,36 @@ a.cta {
     color: #a78a8a;
     text-transform: capitalize;
     margin-left: 10px;
+}
+
+
+@media only screen and (max-width:767px){
+.row {
+    direction: ltr;
+}
+.footer__links ul {
+    padding-right: 0;
+    padding-left: 0;
+}
+.footer .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+.row.fotrmenu {
+    justify-content: space-between;
+}
+a.footer__link {
+    font-size: 12px;
+}
+ul.contact-section.contact-section--grid.footer__contact.row {
+    padding-right: 0;
+    padding-left: 0;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.footer__logo-container-section {
+    display: inline-block;
+}
 }

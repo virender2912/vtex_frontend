@@ -50,11 +50,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row fotrmenu">
           {/* Information Section */}
           <div className="offset-lg-2 col-6 col-md-3 col-lg-2">
             <div className="footer__links paragraph-regular">
-              <h4 className="footer__links-title" style={{ direction: "ltr", textAlign: "left" }}>
+              <h4 className="footer__links-title" >
                 Information
               </h4>
               <ul>
@@ -89,7 +89,7 @@ export default function Footer() {
                     </span>
                   </a>
                 </li>
-                <li className="footer-social-media__item--instagram footer-social-media__item">
+                {/* <li className="footer-social-media__item--instagram footer-social-media__item">
                   <a
                     href="https://www.instagram.com/leem_global/"
                     rel="noopener noreferrer"
@@ -97,9 +97,9 @@ export default function Footer() {
                     title="Instagram"
                     className="cta footer-social-media__cta"
                   >
-                    <span className="icon icon--fill footer-social-media__icon">
+                    <span className="icon icon--fill footer-social-media__icon"> */}
                       {/* Instagram Icon */}
-                      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+                      {/* <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
                         <path
                           d="M18.538 6.662a1.2 1.2 0 0 1-1.2 1.2 1.2 1.2 0 0 1-1.2-1.2 1.2 1.2 0 0 1 1.2-1.2 1.2 1.2 0 0 1 1.2 1.2M12 6.865A5.135 5.135 0 1 0 17.135 12 5.135 5.135 0 0 0 12 6.865Zm0 8.468A3.333 3.333 0 1 1 15.333 12 3.333 3.333 0 0 1 12 15.333z"
                           fill="#4267B2"
@@ -107,7 +107,7 @@ export default function Footer() {
                       </svg>
                     </span>
                   </a>
-                </li>
+                </li> */}
                 <li className="footer-social-media__item--youtube footer-social-media__item">
                   <a
                     href="https://www.youtube.com/@leemglobal9565"
@@ -131,7 +131,7 @@ export default function Footer() {
           {/* Help Section */}
           <div className="col-6 col-md-3 col-lg-2">
             <div className="footer__links paragraph-regular">
-              <h4 className="footer__links-title" style={{ direction: "ltr", textAlign: "left" }}>
+              <h4 className="footer__links-title">
                 Help
               </h4>
               <ul>

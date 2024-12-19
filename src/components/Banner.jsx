@@ -40,21 +40,8 @@ const Banner = ({ imageSrc, heading, subheading, collectionID }) => { // Ensure 
 
                 {/* Pass the productid prop to CollectionProduct */}
                 <CollectionProduct id={collectionID} />
-               
- 
+
             </div>
-
-            {/* <button type="button" title="View Collection" class="cta product-collection-banner__link-container product-collection-banner__link-container--sale">
-            <span class="description-small-bold product-collection-banner__link-title description-small-bold product-collection-banner__link-title--sale">
-            {buttonname}
-                </span>
-                <span class="product-collection-banner__link-subtitle product-collection-banner__link-subtitle--sale product-collection-banner__link-subtitle">
-                {piececount}
-                    </span>
-                    <span class="icon icon--flip icon--fill product-collection-banner__link-icon product-collection-banner__link-icon--sale">
-            </span></button> */}
-
-
         </div>
     );
 };

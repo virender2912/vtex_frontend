@@ -4,10 +4,11 @@
 
 .product-heading {
     font-size: 2rem;
-    text-align: right;
+    /* text-align: right; */
+    text-align: left;
     color: #333;
     margin-bottom: 8px;
-    padding-right: 263px;
+    padding-right: 0px;
     font-weight: 300;
 }
 
@@ -31,7 +32,8 @@
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0px 40px rgba(0, 0, 0, 0.2);
 }
 
 .product-image {
@@ -43,11 +45,12 @@
 }
 
 .product-name {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 400;
     margin-top: 15px;
     color: #333;
     transition: color 0.3s ease;
+    margin-bottom: 0;
 }
 
 .product-name:hover {
@@ -58,8 +61,16 @@
     font-size: 15px !important;
     font-weight: 500;
     color: #565656 !important;
-    margin: 10px 0 !important;
+    /* margin: 10px 0 !important; */
+    margin: 6px 0 10px !important;  
 }
+
+a.product-card-link {
+    text-decoration: unset;
+}
+/* .product-grid a.product-card-link:last-child {
+    display: none;
+} */
 
 .sorting-controls {
     margin: 20px 0;
@@ -73,14 +84,109 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+.hamburgericobs {
+    display: none;
+}
+
+
+.slick-prev,
+.slick-next {
+    color: #333;
+    z-index: 1;
+}
+
+.slick-dots li button:before {
+    color: #555;
+}
+
+/* Style for Slick Arrows */
+
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: #555; /* Darker hover effect */
+}
+
+.slick-prev {
+    left: 0px!important;
+}
+
+.slick-next {
+    right: -0px!important;
+}
+
+.product-slider-item a {
+    text-decoration: unset;
+}
+
+.slick-prev:before, .slick-next:before {
+    opacity: 1;
+    color: #000;
+}
+
 
 @media only screen and (max-width:767px){
+    .hamburgericobs {
+        display: inline-block;
+    }
     .product-heading {
-        padding-right: 170px;
+        padding-right: 0px;
+        font-size: 1.5rem;
     }
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0;
         padding: 20px 0;
     }
+    .product-image {
+        height: auto;
+        max-height: 118px;
+        object-fit: contain;
+    }
+    .collection-product-container {
+        padding: 20px 20px 0 20px;
+    }
+    .banner-content {
+        padding: 0 20px 0 20px;
+    }
+    .product-name {
+        font-size: 15px;
+    }
+    .collection-product-container .product-card {
+        padding: 15px 0;
+    }
+    .collection-product-container h1.product-heading {
+        text-align: center;
+    }
+    .sorting-controls {
+        justify-content: center;
+    }
+    .slick-prev, .slick-next {
+        top: 35%!important;
+    }
+    .slick-prev {
+        left: -14px!important;
+    }
+    .slick-next {
+        right: -14px!important;
+    }
+    .product-image {
+        height: auto;
+    }
+}
+
+
+@media only screen and (min-width:768px)and (max-width:1024px){
+.product-image {
+    height: 200px;
+}
+.slick-prev, .slick-next {
+    top: 40%!important;
+}
+.slick-next {
+    right: -14px!important;
+}
+.slick-prev {
+    left: -14px!important;
+}
 }
